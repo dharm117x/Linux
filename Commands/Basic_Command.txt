@@ -19,26 +19,22 @@ Soft Links (symbolic links ):
 
 ln -s file1 file1-soft
 
-----------------------------
+
 File delete command:
 ========================
 
 rm filename
-
 rm -r mydir
-
 rm -r -f mydir1 mydir1 
 
-To remove a file whose name starts with a ‘-’, for example ‘-foo’,  use one of these commands:
-
 rm -- -foo
-
 rm ./-foo
 
 File or folder copy
--------------------
+==================
 
 cp -R source destination/
+
 
 Process command:
 ====================
@@ -54,13 +50,9 @@ Ctrl + c exist from tail command.
 
 ls command, show the all file and folder.
 =========================================
-
 ls -a
-
 ls -l
-
 ls -lh
-
 ls -l file // return file info.
 
 
@@ -69,11 +61,8 @@ VI commands:
 creat  new file
 
 vi filename
-
 i for insert
-
 escp use to return
-
 d for line delete
 
 :q  for quit
@@ -83,7 +72,6 @@ d for line delete
 :e! undo all changes.
 
 
----------------------
 Tar extract command:
 =======================
 
@@ -177,9 +165,32 @@ Options:
 
 -------------------------
 FILE Search:
-------------------------
+===========================
+find . -name thisfile.txt
+
+find /home -type f  -iname thisfile.txt
+
+find /home -maxdepth 10 -type f -size -1M
+
+find / -type f -ls |grep '10 Sep'
+
+find /home/ -ctime -30
+
+find /home/ -ls -ctime -1
+
+find . -type f -newerat 2023-10-01 ! -newerat 2023-10-01
+
+find . -type f -print | xargs grep "scr"
 
 
+Locate command for file search
+------------------------------
+The locate utility works better and faster than the find command counterpart because instead of searching the file system when a file search is initiated, it would look through a database.
+
+locate sample.txt 
+locate "*.html" -n 20
+locate -c [.txt]*
+locate -i *SAMPLE.txt*
 
 
 

@@ -1,0 +1,15 @@
+https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+
+awk options 'selection _criteria {action }' input-file > output-file
+
+Crate data file:
+-----------------
+cat > employee.txt 
+
+awk 'END { print NR }' employee.txt
+
+awk '{print}' employee.txt
+
+awk '/manager/ {print}' employee.txt 
+
+awk '{print NR,  $1,  $2}' employee.txt

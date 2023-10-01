@@ -1,0 +1,59 @@
+Enble new doc on right click:
+====================
+mkdir -p ~/Templates
+cd ~/Templates
+touch document.txt
+
+
+
+storage clean
+========================
+sudo apt-get update
+sudo apt-get autoclean
+sudo apt-get clean
+sudo apt-get autoremoe
+sudo apt-get remoe pakgname
+
+sudo du -sh /var/cache/apt
+
+journalctl --disk-usage
+sudo journalctl --vacuum-time=3d
+
+
+sudo du -sh /var/lib/snapd/snaps
+sudo du -sh ~/.cache/thumbnails/
+
+
+System command
+==========================
+history
+top
+ps
+
+fdisk -l
+lsblk
+ip a
+
+fdisk -l
+
+df -h
+df -a
+df -i
+
+du -h
+du -a
+du -s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
