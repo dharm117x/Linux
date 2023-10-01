@@ -1,0 +1,187 @@
+Utility commnads
+==================
+use sudo before if no permission:
+
+Root user login:
+sudo -i
+
+create command for file or folder:
+=======================
+1. vi filename
+2. mkdir foldername
+
+create file or filder wth -
+using "--" before file or folder.
+
+Softlink and hardlink.
+=====================
+Soft Links (symbolic links ):
+
+ln -s file1 file1-soft
+
+----------------------------
+File delete command:
+========================
+
+rm filename
+
+rm -r mydir
+
+rm -r -f mydir1 mydir1 
+
+To remove a file whose name starts with a ‘-’, for example ‘-foo’,  use one of these commands:
+
+rm -- -foo
+
+rm ./-foo
+
+File or folder copy
+-------------------
+
+cp -R source destination/
+
+Process command:
+====================
+
+top "q to quit"
+
+ps -e | grep java
+
+tail -f log file.
+
+Ctrl + c exist from tail command.
+
+
+ls command, show the all file and folder.
+=========================================
+
+ls -a
+
+ls -l
+
+ls -lh
+
+ls -l file // return file info.
+
+
+VI commands:
+=====================
+creat  new file
+
+vi filename
+
+i for insert
+
+escp use to return
+
+d for line delete
+
+:q  for quit
+:q! for quit without change.
+:x  quit with change.
+:u  undo last change (can be repeated to undo preceding commands)
+:e! undo all changes.
+
+
+---------------------
+Tar extract command:
+=======================
+
+tar -xvf file.tar
+
+tar -xf file.name.tar -C /path/to/directory
+
+-x : Extract a tar ball.
+-v : Verbose output or show progress while extracting files.
+-f : Specify an archive or a tarball filename.
+-j : Decompress and extract the contents of the compressed archive created by bzip2 program (tar.bz2 extension).
+-z : Decompress and extract the contents of the compressed archive created by gzip program (t
+
+Zip and Unzip command
+--------------------------
+Zip create.
+zip -r zipname.zip folder/
+
+Unzip:
+unzip zipname.zip -d folder/
+
+
+Tar create command:
+========================
+
+tar -cvf output.tar /dirname
+
+tar -cvf output.tar /dirname1 /dirname2 filename1 filename2
+
+tar -czvf name-of-archive.tar.gz /sc
+
+-c : Create a tar ball.
+-v : Verbose output (show progress).
+-f : Output tar ball archive file name.
+-x : Extract all files from archive.tar.
+-t : Display the contents (file list) of an archive.
+-z : Compress the archive with gzip.
+
+--exclude=*.mp4
+
+tar -cvf output.tar /dirname --exclude=*.mp4  //create tar file without mp4 file.
+
+tar -tvf file.tar   // view tar details
+
+
+File permission and user
+===============================
+
+chmod command:
+
+// using numbers
+
+chmod 777 filename  // all permission to file/folder
+
+// using letters 
+
+chmod u+rw,go+r important.txt
+So we're saying file owner user gets read and write permissions, group and others get to read.
+
+with the important.sh file being made executable we could just run this:
+
+chmod u+rwx,go+rx important.sh
+
+Permissions can be given to a user who owns the file (u = user), group of said user (g = group), 
+everyone else (o = others) or all users (a). And the basic permissions that can be given 
+include read (r), write (w), and execute (x). 
+
+
+if we're setting permissions to a folder we need to specify the -R option (standing for "recursive"):
+
+chmod -R 644 important-files/
+
+------------------------------------
+
+chown command:
+
+chown command changes the user and/or group ownership of for given file. The syntax is:
+
+chown owner-user file 
+chown owner-user:owner-group file
+chown owner-user:owner-group directory
+chown options owner-user:owner-group file
+
+chown user filename/directory
+chown user:group filename/directory
+chown options user:group filename/directory
+
+Options:
+
+-R  : Recursively change ownership of directories and their contents.
+
+-------------------------
+FILE Search:
+------------------------
+
+
+
+
+
+
+

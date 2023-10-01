@@ -1,0 +1,115 @@
+User/Groups
+---------------
+groups root -- group info
+
+sudo usermod -a -G second_example_group example_user
+sudo usermod -a -G vbox dharmendra
+sudo usermod -a -G docker dharmendra
+
+
+SNAP:
+------------------
+sudo apt install snapd
+
+AZUre-Clinet
+-------------
+sudo snap install storage-explorer
+
+Eclipse:
+sudo snap install --classic eclipse
+
+Update eclipse.ini
+------------------
+simply copy /snap/eclipse/current/eclipse.ini to ${HOME}/snap/eclipse/current/eclipse.ini, where you can edit it, and it will automatically get picked up by the snap.
+
+Java
+--------------
+sudo update-alternatives --config javac
+sudo apt install openjdk-8-jdk
+
+
+Maven
+---------------
+wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar -xvf apache-maven-3.6.3-bin.tar.gz
+sudo mv apache-maven-3.6.3 /opt/
+
+add below line in user profile
+-------------------------------------
+vi ~/.profile
+
+M2_HOME='/opt/apache-maven-3.6.3'
+if [ -d "$M2_HOME/bin" ] ; then
+  PATH="$M2_HOME/bin:$PATH"
+fi
+
+source .profile
+
+--------------
+Global path: vi /etc/environment
+Update file wiht below line:
+PATH="$PATH:/opt/apache-maven-3.6.3/bin"
+source /etc/environment
+
+Docker
+----------------
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce -> install docker
+
+sudo systemctl status docker
+
+sudo usermod -aG docker ${USER} --> add user inside usergroup doker: needs logout to reflect
+
+su - dharma
+
+id -nG -> Confirm that your user is now added to the docker group by typing:
+
+
+Docker-Compose:
+----------------
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+
+Dcoekr Compose:
+-----------------
+docker-compose.yml
+
+version: '3.7'
+
+services:
+
+  limits-service:
+    image: in28min/mmv2-limits-service:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "9000:9000"
+    networks:
+      - currency-network
+
+networks:
+  currency-network:
+
+-----------------
+Build:
+
+docker-compose up -d
+
+docker-compose ps
+
+docker-compose logs
+
+docker-compose stop
+
+docker-compose down
+

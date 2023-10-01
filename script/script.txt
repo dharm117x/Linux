@@ -1,0 +1,24 @@
+1. Create executable script.
+===============================
+open sh file
+------------
+
+vi hello.sh
+
+add below line in file and save:
+-------------------------------
+
+#!/bin/bash
+echo "Hello, World!" 
+echo "Knowledge is power."
+
+
+add executable permission:
+--------------------------
+chmod +x hello.sh
+
+run file
+---------
+
+./hello.sh
+
