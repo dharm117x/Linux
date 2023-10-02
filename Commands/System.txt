@@ -5,6 +5,24 @@ cd ~/Templates
 touch document.txt
 
 
+Default editor:
+===============
+vi ~/.bashrc:
+add below line in last:
+
+export EDITOR=vim
+
+Crontab setup
+================
+crontab -l	
+
+crontab -e
+insert below line:
+
+*/3 * * * * /home/dharmendra/Desktop/Linux/script/hello.sh > /tmp/output 2>&1
+
+grep CRON /var/log/syslog
+less /var/log/syslog | grep CRON
 
 storage clean
 ========================

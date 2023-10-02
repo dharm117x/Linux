@@ -51,8 +51,56 @@ Update file wiht below line:
 PATH="$PATH:/opt/apache-maven-3.6.3/bin"
 source /etc/environment
 
+Tomcat setup manual
+====================
+1. Download tomcat zip file:
+2. tar -xvf apache-tomcat-9.0.0.M17.tar.gz /opt/tomcat
+3. sudo mv apache-tomcat-9.0.0.M17 apache-tomcat9
+4. sudo lm -s apache-tomcat9/ tomcat
+5. sudo chown -R dharmendra: /opt/tomcat/*
+6. sudo chmod +x /opt/tomcat/bin/*sh
+
+Tomcat service setup:
+----------------------
+cd /etc/systemd/system/
+sudo vi tomcat.service
+
+[Unit]
+Description=Tomcat 9
+After=network.target
+
+[Service]
+Type=forking
+
+Environment="CATALIANA_HOME=/opt/tomcat"
+Environment="CATALIANA_BASE=/opt/tomcat"
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=dharmendra
+Group=dharmendra
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+Load new serive: by command 7
+--------------------------------
+
+7. sudo systemctl daemon-reload
+8. sudo systemctl status tomcat
+9. sudo systemctl start tomcat
+10. sudo systemctl stop tomcat
+11. sudo systemctl enable tomcat
+
+/opt/tomcat/logs$ tail -f catalina.log
+
+
 Docker
-----------------
+=========================
+
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

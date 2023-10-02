@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "Hello, World!" 
-echo "Knowledge is power."
+echo "Hello, World!-> [Date:: $(date '+%d/%m/%Y %H:%M:%S')]"
+

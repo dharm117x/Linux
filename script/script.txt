@@ -7,7 +7,6 @@ vi hello.sh
 
 add below line in file and save:
 -------------------------------
-
 #!/bin/bash
 echo "Hello, World!" 
 echo "Knowledge is power."
@@ -19,6 +18,14 @@ chmod +x hello.sh
 
 run file
 ---------
-
 ./hello.sh
+
+
+
+Last command success or failed:
+-------------------------------
+echo $?
+
+0 for success
+1 for failed
 
