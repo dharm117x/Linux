@@ -1,0 +1,8 @@
+FROM openjdk:11
+
+EXPOSE 8888
+
+ADD target/spring-cloud-config-server.jar spring-cloud-config-server.jar
+
+ENTRYPOINT ["java", "-jar", "spring-cloud-config-server.jar"]
+

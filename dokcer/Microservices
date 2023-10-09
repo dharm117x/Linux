@@ -1,0 +1,93 @@
+FROM openjdk:11
+
+EXPOSE 8765
+
+ADD target/api-gateway.jar api-gateway.jar
+
+ENTRYPOINT ["java", "-jar", "api-gateway.jar"]
+
+docker build -f api-gateway -t api-gateway .
+docker run --name=api-gateway -dp8765:8765 -t api-gateway 
+
+------------------
+FROM openjdk:11
+
+EXPOSE 8761
+
+ADD target/naming-server.jar naming-server.jar
+
+ENTRYPOINT ["java", "-jar", "naming-server.jar"]
+
+docker build -f naming-server -t naming-server .
+docker run --name=naming-server -dp8761:8761 -t naming-server 
+
+------------------
+FROM openjdk:11
+
+EXPOSE 8100
+
+ADD target/currency-conversion-service.jar currency-conversion-service.jar
+
+ENTRYPOINT ["java", "-jar", "currency-conversion-service.jar"]
+
+docker build -f currency-conversion-service -t currency-conversion-service .
+docker run --name=currency-conversion-service -dp8100:8100 -t currency-conversion-service 
+
+------------------
+FROM openjdk:11
+
+EXPOSE 8000
+
+ADD target/currency-exchange-service.jar currency-exchange-service.jar
+
+ENTRYPOINT ["java", "-jar", "currency-exchange-service.jar"]
+
+docker build -f currency-exchange-service -t currency-exchange-service .
+docker run --name=currency-exchange-service -dp8000:8000 -t currency-exchange-service 
+
+------------------
+FROM openjdk:11
+
+EXPOSE 9000
+
+ADD target/limits-service.jar limits-service.jar
+
+ENTRYPOINT ["java", "-jar", "limits-service.jar"]
+
+docker build -f limits-service -t limits-service .
+docker run --name=limits-service -dp9000:9000 -t limits-service
+
+------------------
+FROM openjdk:11
+
+EXPOSE 8888
+
+ADD target/spring-cloud-config-server.jar spring-cloud-config-server.jar
+
+ENTRYPOINT ["java", "-jar", "spring-cloud-config-server.jar"]
+
+docker build -f spring-cloud-service -t spring-cloud-service .
+docker run --name=spring-cloud-service -dp8888:8888 -t spring-cloud-service
+
+================
+docker-compose -f microservice-compose.yml up -d 
+
+docker-compose -f microservice-compose.yml down
+
+docker-compose -f limit-compose.yml up -d 
+
+-d -> detach run in background
+
+
+===============================================
+Service URLS:
+1. With API gatway:
+--------------------
+http://naming-server:8761/
+http://zipkin-server:9411/zipkin/
+
+http://api-gateway:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
+http://api-gateway:/currency-exchange/from/USD/to/INR
+
+http://localhost:8888/limits-service/default
+

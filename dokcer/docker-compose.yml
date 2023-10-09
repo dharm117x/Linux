@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  myapp1:
+    image: nginx
+    ports:
+      - "8090:80"
+    networks:
+      - demo-network
+
+  myapp2:
+   image: nginx
+
+networks:
+  demo-network:
+

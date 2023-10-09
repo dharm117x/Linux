@@ -1,9 +1,25 @@
-Enble new doc on right click:
-====================
-mkdir -p ~/Templates
-cd ~/Templates
-touch document.txt
+1. Enable new document:
+------------------------
+touch ~/Templates/Document
 
+2. Share folder from vbbox to ubuntu18.04
+-----------------------------------------
+> craete share folder settings from vbox and add windows folder.
+> add cuurent user inside usergroup vboxsf
+> sudo usermod -aG vboxsf dharmendra
+
+3. Add user and group
+-----------------------
+sudo groupadd spring
+
+sudo useradd -g users -G wheel,developers nathan
+
+sudo usermod -a -G groupname username
+sudo usermod -aG dharma spring
+
+4. Host file:
+----------------
+sudo vi hosts
 
 Default editor:
 ===============
@@ -62,6 +78,16 @@ du -h
 du -a
 du -s
 
+Service command:
+=================
+sudo systemctl status tomcat
+sudo systemctl start tomcat
+sudo systemctl stop tomcat
+
+systemctl --type=service --state=running
+systemctl --type=service --state=exited
+
+systemctl --type=service | grep docker
 
 
 

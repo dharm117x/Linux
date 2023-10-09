@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  limits-service:
+    image: limits-service:latest
+    mem_limit: 700m
+    ports:
+      - "9000:9000"
+    networks:
+      - limit-network
+    depends_on:
+      - spring-cloud-service
+    environment:
+      SPRING.CONFIG.IMPORT: optional:configserver:http://localhost:8888
+
+  spring-cloud-service:
+    image: spring-cloud-service:latest
+    mem_limit: 700m
+    ports:
+      - "8888:8888"
+    networks:
+      - limit-network
+        
+networks:
+  limit-network:

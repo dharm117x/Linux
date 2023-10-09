@@ -43,17 +43,18 @@ top "q to quit"
 
 ps -e | grep java
 
-tail -f log file.
+tail -f logfile.
 
 Ctrl + c exist from tail command.
 
 
 ls command, show the all file and folder.
 =========================================
-ls -a
-ls -l
-ls -lh
-ls -l file // return file info.
+ls -a // include all files and folder
+ls -l // return file info.
+ls -ltrh  // t = sort by time, r= reverse, h=human readable size
+ls -laSrh // s = sort by size
+ls -laRS // files from subdiractory
 
 
 VI commands:

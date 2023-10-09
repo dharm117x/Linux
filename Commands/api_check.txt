@@ -1,0 +1,5 @@
+watch curl https://google.com
+watch  -n 0.1 curl https://google.com --> 10 req/sec
+
+
+

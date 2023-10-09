@@ -1,0 +1,95 @@
+1. Docker login:
+--------------
+docker login
+dharm117docker/Cybercom117#
+
+2. Create Dockerfile
+--------------------
+FROM openjdk:11
+
+EXPOSE 8080
+
+ADD target/docker-demo.jar docker-demo.jar
+
+ENTRYPOINT ["java", "-jar", "docker-demo.jar"]
+
+3. Build dokcer from docker file
+------------------------------------
+docker build -t api-gateway .
+docker run -p 8080:8080 api-gateway
+
+docker images
+
+Docker push to repository
+---------------------------
+docker login
+docker tag docker-demo dharm117docker/docker-demo
+docker push dharm117docker/docker-demo
+
+Run locally:
+docker run -p 8080:8080 docekr-demo
+
+Run from docker_repos:
+docker run -p 8080:8080 dharm117docker/docker-demo
+
+Docker run in background with name
+--------------------------------------
+docker run --name=naming-server -dp8761:8761 -t naming-server 
+
+Docker stop/start
+------------------
+docker stop naming-server
+docker start naming-server
+
+Docekr logs
+---------------
+docker logs naming-server
+
+Docker Delete:
+======================
+Delete image:
+edocker image rm dharm117docker/docker-demo -f
+
+Remove all container:
+------------
+docker rm $(docker ps -a -f status=exited -q)
+
+Remove all images:
+-----------
+docker rmi $(docker images -a -q)
+
+
+============================================================
+Docker compose for multi service in single file:
+------------------------------------------------
+demo.yml
+
+version: '3'
+
+services:
+
+  myapp1:
+    image: nginx
+    ports:
+      - "8090:80"
+    networks:
+      - demo-network
+
+  myapp2:
+   image: nginx
+
+networks:
+  demo-network:
+
+
+docker-compose up  --default file(docker-compose) to create and run
+
+docker-compose -f demo.yml up -d  -- (d detach run in background)
+
+docker-compose up -d --scale myapp2=4 (scale service)
+
+docker-compose down
+
+
+
+

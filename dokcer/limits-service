@@ -1,0 +1,8 @@
+FROM openjdk:11
+
+EXPOSE 9000
+
+ADD target/limits-service.jar limits-service.jar
+
+ENTRYPOINT ["java", "-jar", "limits-service.jar"]
+
